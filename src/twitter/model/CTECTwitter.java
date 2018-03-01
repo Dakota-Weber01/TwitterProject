@@ -54,5 +54,33 @@ private void collectTweets(String username)
 		page++;
 	}
 }
-
+public String getMostCommonWord(String username)
+{
+	
+}
+private String [] createIgnoredWordArray()
+{
+	String [] boringWords;
+	String fileText = IOController.loadFromFile(appController, "commonWords.txt");
+	int wordCount = 0;
+	
+	Scanner wordScanner = new Scanner(fileText);
+	
+	while(wordScanner.hasNextLine())
+	{
+		wordScanner.nextLine();
+		wordCount++;
+	}
+	boringWords = new String [wordCount];
+	wordScanner.close();
+	
+	wordScanner = new Scanner(this.getClass().getResourceAsStream("data/commonWords.txt"));
+	for(int indedx = 0; index < boringWords.length; index++)
+	{
+		boringWords[index] = wordScanner.nextLine();
+	}
+	wordScanner.close();
+	return boringWords;
+	
+}
 }
