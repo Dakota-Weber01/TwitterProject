@@ -56,7 +56,29 @@ private void collectTweets(String username)
 }
 public String getMostCommonWord(String username)
 {
+	String mostCommon = "";
 	
+	collectTweets(username);
+	turnStatusesToWords();
+	totalWordCount = tweetedWords.size();
+	String [] boring = createIgnoredWordArray();
+	
+	return mostCommon;
+}
+private void trimTheBoringWords(String [] boringWords)
+{
+	for (int index = tweetedWords.size() - 1; index >= 0; index--)
+	{
+		for(int removeIndex = 0; removeIndex < boringWords.length; removeIndex++)
+		{
+			if(tweetedWords.get(index).equals(boringWords[removeIndex]))
+			{
+				tweetedWords.remove(index);
+				removeIndex = boringWords.length;
+			}
+
+		}
+	}
 }
 private String [] createIgnoredWordArray()
 {
